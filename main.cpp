@@ -130,5 +130,6 @@ int main() {
     deleteNode(7,head,tail);
     print(head,tail);
     cout<<"length of SLL is "<<getLength(head)<<endl;
+//
     return 0;
 }
