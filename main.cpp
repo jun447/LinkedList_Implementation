@@ -56,15 +56,18 @@ void InsertAtPosition(Node* &head,Node* &tail,int position,int data){
     nodeToInsert->next=temp->next;
     temp->next=nodeToInsert;
 }
-void print(Node* &head){
+void print(Node* &head,Node* &tail){
     Node* temp=head;
     while(temp!=NULL){
         cout<<temp->data<<" ";
         temp=temp->next;
     }
+
     cout<<endl;
+    cout<<"Head "<<head->data<<endl;
+    cout<<"Tail "<<tail->data<<endl;
 }
-void deleteNode(int position,Node* &head){
+void deleteNode(int position,Node* &head,Node* &tail){
 //    deleting first and start node
     if(position==1){
       Node* temp = head;
@@ -85,6 +88,11 @@ void deleteNode(int position,Node* &head){
       prev->next=curr->next;
       curr->next=NULL;
       delete curr;
+    }
+    Node* temp = head;
+    while(temp !=NULL){
+        tail=temp;
+        temp=temp->next;
     }
 }
 int getLength(Node* &head){
@@ -107,21 +115,19 @@ int main() {
 //    tail ppointer to node1
     Node* tail=node1;
     InsertAtHead(head,12);
-    print(head);
+    print(head,tail);
     InsertAtHead(head,16);
-    print(head);
+    print(head,tail);
     InsertAtHead(head,17);
-    print(head);
+    print(head,tail);
     InsertAtTail(tail,14);
-    print(head);
+    print(head,tail);
     InsertAtPosition(head,tail,5,15);
-    print(head);
+    print(head,tail);
     InsertAtPosition(head,tail,1,89);
-    print(head);
-    deleteNode(2,head);
-    print(head);
-    cout<<"Head "<<head->data<<endl;
-    cout<<"Tail "<<tail->data<<endl;
+    print(head,tail);
+    deleteNode(7,head,tail);
+    print(head,tail);
     cout<<"length of SLL is "<<getLength(head)<<endl;
     return 0;
 }
