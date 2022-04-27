@@ -89,6 +89,7 @@ void deleteNode(int position,Node* &head,Node* &tail){
       curr->next=NULL;
       delete curr;
     }
+
     Node* temp = head;
     while(temp !=NULL){
         tail=temp;
@@ -112,7 +113,7 @@ int main() {
     cout<<node1->next<<endl;
     //head pointed to node1
     Node* head=node1;
-//    tail ppointer to node1
+// //   tail ppointer to node1
     Node* tail=node1;
     InsertAtHead(head,12);
     print(head,tail);
