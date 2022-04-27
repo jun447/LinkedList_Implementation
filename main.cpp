@@ -87,6 +87,15 @@ void deleteNode(int position,Node* &head){
       delete curr;
     }
 }
+int getLength(Node* &head){
+    int count = 0;
+    Node* temp=head;
+    while(temp!=NULL){
+        temp=temp->next;
+        count++;
+    }
+    return count;
+}
 int main() {
 //    Create a new Node
     Node* node1 =new Node(13);
@@ -113,5 +122,6 @@ int main() {
     print(head);
     cout<<"Head "<<head->data<<endl;
     cout<<"Tail "<<tail->data<<endl;
+    cout<<"length of SLL is "<<getLength(head)<<endl;
     return 0;
 }
