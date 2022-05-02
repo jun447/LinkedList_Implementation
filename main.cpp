@@ -161,9 +161,6 @@ void removeLoop(Node* head){
     if (head==NULL)
         return ;
     Node* loop=gettingStartingNode(head);
-    if(loop==NULL){
-        return NULL;
-    }
     Node* temp=loop;
     while(temp->next!=loop){
         temp=temp->next;
