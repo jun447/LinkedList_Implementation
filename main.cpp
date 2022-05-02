@@ -154,6 +154,17 @@ Node* gettingStartingNode(Node* head){
     }
     return slow;
 }
+void removeLoop(Node* head){
+    if (head==NULL)
+        return ;
+    Node* loop=gettingStartingNode(head);
+    Node* temp=loop;
+    while(temp->next!=loop){
+        temp=temp->next;
+
+    }
+    temp->next=NULL;
+}
 int main() {
 //    Create a new Node
     Node* node1 =new Node(13);
@@ -195,5 +206,12 @@ int main() {
     }
    Node* loop=gettingStartingNode(head);
    cout<<"Loop starts at "<<loop->data<<endl;
+   cout<<"remove loop called"<<endl;
+    removeLoop(head);
+    if(detectLoop(head)){
+        cout<<"Cycle is Present "<<endl;
+    }else{
+        cout<<"Cycle is Not Present "<<endl;
+    }
    return 0;
 }
