@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 using namespace std;
 class Node {
    public:
@@ -105,6 +105,43 @@ int getLength(Node* &head){
     }
     return count;
 }
+bool detectLoop(Node* head){
+    if(head==NULL)
+        return false;
+    map<Node* ,bool> visited;
+    Node* temp=head;
+    while(temp!=NULL){
+        //cycle is present in the list
+        if(visited[temp]){
+            cout<<"Present on the element "<<temp->data<<endl;
+//            cout<<"Present on the element "<<visited[temp]<<endl;
+            return true;
+        }
+        visited[temp]=true;
+        temp=temp->next;
+    }
+    return false;
+}
+Node* floydDetectionLoop(Node* head){
+    if (head==NULL){
+        return NULL;
+    }
+    Node* slow=head;
+    Node* fast=head;
+    while(slow!=NULL && fast!=NULL){
+        fast=fast->next;
+        if(fast!=NULL){
+            fast=fast->next;
+        }
+        slow=slow->next;
+
+        if(slow==fast){
+            cout<<"Present on the element "<<slow->data<<endl;
+            return slow;
+        }
+    }
+    return NULL;
+}
 int main() {
 //    Create a new Node
     Node* node1 =new Node(13);
@@ -130,6 +167,21 @@ int main() {
     deleteNode(7,head,tail);
     print(head,tail);
     cout<<"length of SLL is "<<getLength(head)<<endl;
+//    Checking loop in LinkedList
+   if(detectLoop(head)){
+       cout<<"Cycle is Present "<<endl;
+   }else{
+       cout<<"Cycle is Not Present "<<endl;
+   }
+//   Creating loop in LinkedList
+    tail->next=head->next;
+//   Checking loop in LinkedList
+   if(floydDetectionLoop(head)){
+        cout<<"Cycle is Present "<<endl;
+    }else{
+        cout<<"Cycle is Not Present "<<endl;
+    }
+
 //
     return 0;
 }
