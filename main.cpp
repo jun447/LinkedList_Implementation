@@ -147,6 +147,9 @@ Node* gettingStartingNode(Node* head){
         return NULL;
     }
     Node* intersection= floydDetectionLoop(head);
+    if(intersection==NULL){
+        return NULL;
+    }
     Node* slow=head;
     while(slow!=intersection){
         slow=slow->next;
